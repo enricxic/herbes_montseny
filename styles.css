@@ -3086,13 +3086,16 @@ body.high-contrast .tab-btn.active {
 }
 
 /* Ajust del contenidor dins del calaix */
-.chat-container {
-    height: 100%;
+.chat-drawer .chat-container {
+    flex: 1;
+    height: auto;
     max-width: 100%;
     border: none;
     border-radius: 0;
     box-shadow: none;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 768px) {
