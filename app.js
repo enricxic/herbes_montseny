@@ -1175,11 +1175,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Activar Lightbox per a les imatges del carrusel i de la morfologia botànica
         const allLightboxImgs = DOM.drawerContent.querySelectorAll('.carousel-img, .morphology-thumb');
+        
+        // Crear llista d'imatges úniques per evitar duplicats en la navegació del lightbox
+        const imagesList = [];
+        const seenSrcs = new Set();
+        allLightboxImgs.forEach(img => {
+            const src = img.getAttribute('data-full');
+            const desc = img.getAttribute('data-desc') || '';
+            if (src && !seenSrcs.has(src)) {
+                seenSrcs.add(src);
+                imagesList.push({ src, desc });
+            }
+        });
+
         allLightboxImgs.forEach(img => {
             img.addEventListener('click', () => {
-                const fullSrc = img.getAttribute('data-full');
-                const desc = img.getAttribute('data-desc');
-                openLightbox(fullSrc, desc);
+                const src = img.getAttribute('data-full');
+                const idx = imagesList.findIndex(item => item.src === src);
+                openLightbox(imagesList, idx !== -1 ? idx : 0);
             });
         });
 
@@ -1406,7 +1419,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 9.5 LIGHTBOX PER AMPLIAR IMATGES DE LA GALERIA ---
-    function openLightbox(src, desc) {
+    let currentLightboxIndex = 0;
+    let lightboxImages = [];
+
+    function openLightbox(images, index) {
+        lightboxImages = images;
+        currentLightboxIndex = index;
+
         let overlay = document.getElementById('gallery-lightbox');
         if (!overlay) {
             overlay = document.createElement('div');
@@ -1414,23 +1433,75 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.className = 'lightbox-overlay';
             overlay.innerHTML = `
                 <span class="lightbox-close">&times;</span>
+                <button class="lightbox-prev" id="lightbox-prev-btn">&lt;</button>
                 <img class="lightbox-content" id="lightbox-img">
+                <button class="lightbox-next" id="lightbox-next-btn">&gt;</button>
                 <div class="lightbox-caption" id="lightbox-caption"></div>
             `;
             document.body.appendChild(overlay);
             
             overlay.addEventListener('click', (e) => {
-                if (e.target.id !== 'lightbox-img') {
+                if (e.target.id !== 'lightbox-img' && e.target.id !== 'lightbox-prev-btn' && e.target.id !== 'lightbox-next-btn') {
+                    overlay.classList.remove('active');
+                }
+            });
+
+            document.getElementById('lightbox-prev-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateLightbox(-1);
+            });
+
+            document.getElementById('lightbox-next-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateLightbox(1);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                } else if (e.key === 'Escape') {
                     overlay.classList.remove('active');
                 }
             });
         }
         
+        updateLightboxContent();
+        overlay.classList.add('active');
+    }
+
+    function navigateLightbox(direction) {
+        if (lightboxImages.length <= 1) return;
+        currentLightboxIndex += direction;
+        if (currentLightboxIndex < 0) {
+            currentLightboxIndex = lightboxImages.length - 1;
+        } else if (currentLightboxIndex >= lightboxImages.length) {
+            currentLightboxIndex = 0;
+        }
+        updateLightboxContent();
+    }
+
+    function updateLightboxContent() {
         const img = document.getElementById('lightbox-img');
         const caption = document.getElementById('lightbox-caption');
-        img.src = src;
-        caption.textContent = desc || '';
-        overlay.classList.add('active');
+        const prevBtn = document.getElementById('lightbox-prev-btn');
+        const nextBtn = document.getElementById('lightbox-next-btn');
+
+        if (lightboxImages.length > 0) {
+            const currentImg = lightboxImages[currentLightboxIndex];
+            img.src = currentImg.src;
+            caption.textContent = currentImg.desc || '';
+        }
+
+        if (lightboxImages.length <= 1) {
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+        } else {
+            if (prevBtn) prevBtn.style.display = 'block';
+            if (nextBtn) nextBtn.style.display = 'block';
+        }
     }
 
     function closeBotanicalDrawer() {
