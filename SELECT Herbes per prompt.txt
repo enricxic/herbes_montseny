@@ -1,0 +1,11 @@
+SELECT 
+"PLANTA: " || nom_comu || " (" || nom_cientific || ")" || char(10) ||
+"FAMÍLIA: " || familia || char(10) ||
+"DETALLS TIJA: " || descripcio_tija || char(10) ||
+"DETALLS FULLA: " || descripcio_fulla || char(10) ||
+"DETALLS FLOR: " || descripcio_flor || " en " || Inflorescencia || char(10) ||
+"DETALLS FRUIT: " || fruits || " (" || llavors || ")" || char(10) ||
+"DETALLS ARREL: " || arrels || char(10) ||
+"TOXICITAT: " || toxicitat AS Injeccio_IA
+FROM Herbes
+WHERE nom_comu = 'Orenga'; -- Canvia el nom segons la planta que vulguis

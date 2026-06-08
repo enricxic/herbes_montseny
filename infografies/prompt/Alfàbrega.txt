@@ -1,0 +1,17 @@
+[ESTIL s.XIX ESTRICTE] Obligatori estil gravat antic s.XIX (prohibit vector modern o gràfics 3D). Llenç horitzontal. Fons: '01 Fons.jpg' 100% pla de vora a vora (sense cantonades cremades ni vinyetat). Traç: Tinta negra fina (0.5pt). Ombreig: línies paral·leles (hatching) i puntillisme (prohibits degradats digitals). Color: Aquarel·la dessaturada estil museu. Tipografia: Serif/Garamond antiga (prohibida sans-serif). Text fosc sobre paper clar (prohibits blocs o fons negres).
+
+[ESTRUCTURA I MARCS] Quadrícula simètrica de línies negres fines Rectangulars (sense cantonades arrodonides). Títol superior: "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMÚ]" i nom científic sota en llatí cursiva. Centre (40% espai): Dibuix net de la planta sencera en el seu hàbit natural. Cada quadrant es retola a la cantonada superior esquerra interior amb text net en tinta: "A. Morfologia de la fulla i tija", "B. Anatomia floral", "C. Sistema subterrani", "D. Fructificació i llavors".
+
+[IDIOMA I SEGURETAT] Tot en català normatiu (zero anglès, prohibits "buds, leaves, roots, seed, and"). Toxicitat: si és tòxica, calavera en cercle vermell a la base del quadrant C; si és segura, omet el símbol i l'alerta.
+
+[FONTS VISUALS] Busca a les fonts els fitxers que comencin per "Acant" ([NOM]_01.jpg, [NOM]_fulla.jpg, [NOM]_flor.jpg, [NOM]_fruit.jpg) com a referència anatòmica real de l'espècie.
+
+[DADES DE LA PLANTA]
+PLANTA: Alfàbrega (Ocimum basilicum)
+FAMÍLIA: Lamiàcies
+DETALLS TIJA: Erecta i ramificada.
+DETALLS FULLA: Grans, ovades, brillants i molt aromàtiques.
+DETALLS FLOR: Blanques. en Espigues de verticil·lastres.
+DETALLS FRUIT: 4 núcules. (Negres.)
+DETALLS ARREL: Arrel prima.
+TOXICITAT: Segura.

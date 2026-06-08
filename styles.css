@@ -1,0 +1,3133 @@
+/* ==========================================================================
+   DISSENY I ESTÈTICA: ARXIU BOTÀNIC DEL MONTSENY
+   ========================================================================== */
+
+/* Variables del sistema de disseny */
+:root {
+    --color-bg-main: #faf8f5;        /* Crema molt clar i natural */
+    --color-bg-card: #ffffff;        /* Blanc immaculat per a targetes */
+    --color-primary: #1e3f20;        /* Verd bosc de les fulles del Montseny */
+    --color-primary-light: #2d5a27;  /* Verd bosc clar per a interaccions */
+    --color-primary-ultra-light: rgba(30, 63, 32, 0.05); /* Fons verd suau */
+    --color-accent: #c49a45;         /* Daurat botànic per a elements destacats */
+    --color-accent-light: #e0b863;   /* Daurat botànic més clar */
+    --color-text-dark: #132617;      /* Text principal (verd-negre molt fosc) */
+    --color-text-muted: #5e6b60;     /* Text secundari o tènue */
+    --color-border: #e6e3dc;         /* Vores suaus estil sorra clara */
+    --color-toxic: #c53030;          /* Roig alerta per a plantes tòxiques */
+    --color-toxic-bg: #fff5f5;       /* Fons d'alerta per a plantes tòxiques */
+    --color-safe: #2f855a;           /* Verd per a indicadors segurs */
+    
+    /* Tipografies */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    
+    /* Transicions i ombres */
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.03);
+    --shadow-medium: 0 8px 30px rgba(19, 38, 23, 0.08);
+    --shadow-glow: 0 0 20px rgba(30, 63, 32, 0.15);
+    
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+}
+
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   CAPÇALERA / HERO SECTION (Fons complet fonsWeb.jpeg net sense degradats)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    min-height: 100vh; /* Ocupa tota la pantalla inicial */
+    width: 100%;
+    background-image: url('imatges/fonsWeb.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.05), 0 4px 30px rgba(0,0,0,0.06);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Capçalera estil Glassmorphism transparent per contrast i llegibilitat sobre fons clar */
+.hero-title-container {
+    background: rgba(253, 252, 249, 0.72);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    padding: 30px 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 12px 40px rgba(12, 27, 16, 0.08);
+    text-align: center;
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition-smooth);
+}
+
+.hero-title-container:hover {
+    background: rgba(253, 252, 249, 0.78);
+    box-shadow: 0 16px 45px rgba(12, 27, 16, 0.12);
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 4.2vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    line-height: 1.15;
+}
+
+.hero-subtitle {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2vw, 1.45rem);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+}
+
+/* Estadístiques sobre el fons del Hero */
+.stats-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 5px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--color-border);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-md);
+    min-width: 130px;
+    flex: 1;
+    max-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(30, 63, 32, 0.05);
+    border-color: var(--color-primary-light);
+}
+
+.stat-number {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 800;
+    color: var(--color-primary-light);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE CONTENIDOR PRINCIPAL
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* ==========================================================================
+   SIMULADOR D'IDENTIFICACIÓ DE PLANTES (Sobre el fons)
+   ========================================================================== */
+.scanner-section {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+}
+
+.scanner-card {
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+    padding: 30px;
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    width: 100%;
+    transition: var(--transition-smooth);
+}
+
+.scanner-card:hover {
+    box-shadow: var(--shadow-glow);
+}
+
+.scanner-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.scanner-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.scanner-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.scanner-description {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+}
+
+.scanner-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Botons de disseny premium */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(30, 63, 32, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(30, 63, 32, 0.3);
+}
+
+.btn-secondary {
+    background-color: #f3efe6;
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: #e9e3d5;
+    transform: translateY(-2px);
+}
+
+.btn-alert {
+    background-color: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+}
+
+.btn-alert:hover {
+    background-color: #edf2f7;
+    color: #2d3748;
+}
+
+/* Simulador actiu d'escaneig */
+.scanner-simulation {
+    margin-top: 25px;
+    border-top: 1px dashed var(--color-border);
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.sim-viewfinder {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 280px;
+    background: #0f1d13;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    border: 3px solid var(--color-primary);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Fons de simulació de bosc animat */
+.sim-forest-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url('imatges/fonsWeb.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px) brightness(0.5) contrast(1.2);
+    transform: scale(1.05);
+    transition: var(--transition-smooth);
+}
+
+/* Línia làser d'escaneig */
+.scan-laser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, rgba(0,255,0,0) 10%, rgba(34,197,94,1) 50%, rgba(0,255,0,0) 90%);
+    box-shadow: 0 0 15px 3px rgba(34, 197, 94, 0.8);
+    z-index: 3;
+    animation: laserScan 2s infinite ease-in-out;
+}
+
+@keyframes laserScan {
+    0% { top: 0%; }
+    50% { top: 100%; }
+    100% { top: 0%; }
+}
+
+.scan-status {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(12, 27, 16, 0.85);
+    color: #22c55e;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    z-index: 4;
+    text-shadow: 0 0 5px rgba(0,255,0,0.5);
+    animation: pulseScanStatus 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseScanStatus {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.02); }
+}
+
+/* Presets per a proves del simulador */
+.scanner-presets {
+    width: 100%;
+    max-width: 550px;
+    text-align: left;
+}
+
+.preset-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.preset-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.preset-btn {
+    min-width: 120px;
+    background: #f7fafc;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.preset-btn:hover {
+    background: var(--color-primary-ultra-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.preset-btn-alert:hover {
+    background: #fff5f5 !important;
+    border-color: var(--color-toxic) !important;
+    color: var(--color-toxic) !important;
+}
+
+.sim-controls {
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   RESULTAT IDENTIFICACIÓ FALLIDA I GUARDAT
+   ========================================================================== */
+.scan-fail-result {
+    margin-top: 20px;
+    border-top: 1px dashed var(--color-border);
+    padding-top: 25px;
+    animation: fadeIn 0.4s ease-out;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fail-icon {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.scan-fail-result h3 {
+    font-family: var(--font-serif);
+    color: var(--color-toxic);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.scan-fail-result p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fail-preview-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.fail-preview {
+    width: 220px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--border-radius-sm);
+    border: 2px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    background-color: #0f1d13;
+}
+
+.fail-save-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fail-save-form label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.fail-save-form textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--color-text-dark);
+    outline: none;
+    resize: none;
+    transition: var(--transition-smooth);
+    background-color: #fafafa;
+}
+
+.fail-save-form textarea:focus {
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(30, 63, 32, 0.08);
+}
+
+.fail-form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.fail-form-actions button {
+    flex: 1;
+}
+
+/* ==========================================================================
+   EXPLORADOR I PESTANYES DE FILTRES
+   ========================================================================== */
+.explorer-section {
+    margin-bottom: 40px;
+}
+
+.explorer-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.explorer-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 8px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* Pestanyes d'estil plantilla.png */
+.tabs-nav {
+    display: flex;
+    background: #e2ded5;
+    border-radius: 40px;
+    padding: 6px;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.tab-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 14px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5a5449;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: center;
+    outline: none;
+}
+
+.tab-btn.active {
+    background-color: #ffffff;
+    color: var(--color-text-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tab-btn:hover:not(.active) {
+    color: var(--color-text-dark);
+}
+
+/* Contenidor de Pestanyes */
+.tab-content-container {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 25px;
+    margin-bottom: 35px;
+    box-shadow: var(--shadow-subtle);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. Disseny Pestanya Alfabètic */
+.alphabet-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.letter-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.letter-btn:hover {
+    background-color: var(--color-primary-ultra-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.letter-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 3px 8px rgba(30, 63, 32, 0.3);
+}
+
+.letter-btn.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* 2. Disseny Pestanya Cerca */
+.search-bar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-muted);
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 50px 15px 50px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    background-color: #f7fafc;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.search-input:focus {
+    background-color: #ffffff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 63, 32, 0.1);
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 18px;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    outline: none;
+    line-height: 1;
+}
+
+.clear-search-btn:hover {
+    color: var(--color-text-dark);
+}
+
+.search-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.suggestion-tag {
+    background: #f1ede2;
+    color: #5a5449;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.suggestion-tag:hover {
+    background: var(--color-primary-ultra-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* 3. Disseny Pestanya Remeis */
+.remedy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.remedy-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.remedy-card:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-ultra-light);
+    transform: translateY(-2px);
+}
+
+.remedy-card.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(30, 63, 32, 0.2);
+}
+
+.remedy-card-icon {
+    font-size: 1.8rem;
+}
+
+.remedy-card-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.remedy-card-count {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-weight: 500;
+    background: rgba(0,0,0,0.05);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+.remedy-card.active .remedy-card-count {
+    background: rgba(255,255,255,0.2);
+    color: #ffffff;
+}
+
+/* 4. Disseny Pestanya Temporades */
+.season-selector {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.season-btn {
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    color: var(--color-text-dark);
+}
+
+.season-btn:hover {
+    background-color: var(--color-primary-ultra-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.season-btn.active {
+    background-color: var(--season-color, var(--color-primary));
+    color: #ffffff;
+    border-color: var(--season-color, var(--color-primary));
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 5. Disseny Herbari / Pendents d'Identificació */
+.pendents-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 15px;
+}
+
+.pendents-header h3 {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.pendents-header p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.pendents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.pendents-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.pendents-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+}
+
+.pendents-img-wrapper {
+    position: relative;
+    height: 180px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #0c1b10;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.pendents-date-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(12, 27, 16, 0.8);
+    color: #ffffff;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.pendents-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.pendents-notes-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pendents-notes-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-text-dark);
+    background: #fdfaf5;
+    resize: none;
+    outline: none;
+    transition: var(--transition-smooth);
+    line-height: 1.4;
+}
+
+.pendents-notes-textarea:focus {
+    border-color: var(--color-primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(30, 63, 32, 0.05);
+}
+
+.pendents-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    border-top: 1px solid #f1ede2;
+    padding-top: 15px;
+}
+
+.btn-sm {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-smooth);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: 5px;
+}
+
+.btn-sm-danger {
+    background: var(--color-toxic-bg);
+    color: var(--color-toxic);
+    border: 1px solid rgba(197, 48, 48, 0.15);
+}
+
+.btn-sm-danger:hover {
+    background: var(--color-toxic);
+    color: #ffffff;
+    border-color: var(--color-toxic);
+}
+
+.btn-sm-save {
+    background: var(--color-primary-ultra-light);
+    color: var(--color-primary);
+    border: 1px solid rgba(30, 63, 32, 0.15);
+    flex-grow: 1;
+}
+
+.btn-sm-save:hover {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   ESTAT DEL FILTRE PRINCIPAL
+   ========================================================================== */
+.filter-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    background: var(--color-primary-ultra-light);
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid var(--color-primary);
+}
+
+.status-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.btn-text {
+    background: transparent;
+    border: none;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    outline: none;
+}
+
+.btn-text:hover {
+    color: var(--color-accent-light);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   GRAELLA DE TARGETES DE PLANTES
+   ========================================================================== */
+.plants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    position: relative;
+    min-height: 250px;
+}
+
+/* Targeta de Planta Individual (Premium) */
+.plant-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-smooth);
+}
+
+.plant-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition-smooth);
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-color: rgba(30, 63, 32, 0.2);
+}
+
+.plant-card:hover::before {
+    transform: scaleX(1);
+}
+
+.plant-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.plant-family-tag {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: #fbf6eb;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(196, 154, 69, 0.15);
+}
+
+.plant-title {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1.25;
+}
+
+.plant-scientific {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+}
+
+.plant-card-middle {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.plant-desc-short {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+.plant-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1ede2;
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.plant-info-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.plant-badge-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.plant-toxic-badge {
+    color: var(--color-toxic);
+    background: rgba(197, 48, 48, 0.08);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    border: 1px solid rgba(197, 48, 48, 0.15);
+}
+
+.plant-card-action {
+    color: var(--color-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.plant-card:hover .plant-card-action {
+    color: var(--color-accent);
+}
+
+/* Spinner de càrrega */
+.loading-spinner {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    color: var(--color-text-muted);
+    gap: 15px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(30, 63, 32, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Cas de sense resultats */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-text-muted);
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.no-results-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   FITXA BOTÀNICA - PANELL LATERAL LLISCANT (DRAWER)
+   ========================================================================== */
+.botanical-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 27, 16, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.botanical-drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.botanical-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background-color: var(--color-bg-main);
+    z-index: 101;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+    transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.botanical-drawer.active {
+    right: 0;
+}
+
+/* Botó de tancar superior */
+.drawer-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 10;
+    transition: var(--transition-smooth);
+    line-height: 1;
+    outline: none;
+}
+
+.drawer-close-btn:hover {
+    background-color: var(--color-toxic-bg);
+    color: var(--color-toxic);
+    border-color: rgba(197, 48, 48, 0.2);
+    transform: rotate(90deg);
+}
+
+.drawer-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: 40px 30px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-border);
+}
+
+.drawer-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+}
+
+/* Elements interns del Drawer */
+.drawer-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 20px;
+}
+
+.drawer-family {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.drawer-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+}
+
+.drawer-scientific {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.drawer-synonyms {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    background: #f1ede2;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Blocs interns */
+.drawer-section {
+    margin-bottom: 30px;
+}
+
+.drawer-section-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--color-primary-ultra-light);
+    padding-bottom: 6px;
+}
+
+.drawer-section-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Graella de Morfologia */
+.morphology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 15px;
+}
+
+.morphology-item {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 15px;
+}
+
+.morphology-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.morphology-value {
+    font-size: 0.88rem;
+    color: var(--color-text-dark);
+}
+
+/* Caixa estil pergamí (Remeis i Receptes) */
+.paper-box {
+    background-color: #fbf9f3;
+    border-left: 4px solid var(--color-accent);
+    border-radius: 4px;
+    padding: 18px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
+    margin-bottom: 15px;
+}
+
+.paper-box-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #8c6a23;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.paper-box-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+}
+
+/* Alerta de Toxicitat */
+.toxic-alert-box {
+    background-color: var(--color-toxic-bg);
+    border: 1px solid rgba(197, 48, 48, 0.2);
+    border-left: 5px solid var(--color-toxic);
+    border-radius: 6px;
+    padding: 18px;
+    color: #742a2a;
+    margin-bottom: 20px;
+}
+
+.toxic-alert-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.toxic-alert-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* Informació de Recollida i Hàbitat */
+.info-row-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.info-row {
+    display: flex;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.info-row-label {
+    background: var(--color-primary-ultra-light);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 15px;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border);
+}
+
+.info-row-value {
+    padding: 15px;
+    font-size: 0.88rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+.toast-notification {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%, 50px);
+    background: var(--color-text-dark);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.toast-notification.active {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: #0c1b10;
+    color: #e6e8e6;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 5px solid var(--color-accent);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+}
+
+.footer-desc {
+    font-size: 0.88rem;
+    color: #a3b0a7;
+    max-width: 500px;
+}
+
+.footer-separator {
+    width: 60px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin: 10px 0;
+}
+
+.footer-copy {
+    font-size: 0.78rem;
+    color: #819185;
+}
+
+/* ==========================================================================
+   DISSENY RESPONSIVE (MEDIA QUERIES)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .hero-section {
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .hero-title-container {
+        padding: 20px;
+    }
+    
+    .stats-container {
+        gap: 10px;
+    }
+    
+    .stat-card {
+        min-width: 100px;
+        padding: 8px 12px;
+    }
+    
+    .container {
+        padding: 40px 15px;
+    }
+    
+    .scanner-card {
+        padding: 20px;
+    }
+    
+    .sim-viewfinder {
+        height: 220px;
+    }
+    
+    .tabs-nav {
+        border-radius: 15px;
+        flex-direction: row;
+        padding: 4px;
+        max-width: 100%;
+    }
+    
+    .tab-btn {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+    }
+    
+    .remedy-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 10px;
+    }
+    
+    .remedy-card {
+        padding: 12px;
+    }
+    
+    .remedy-card-icon {
+        font-size: 1.5rem;
+    }
+    
+    .pendents-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .botanical-drawer {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .drawer-content {
+        padding: 30px 20px;
+    }
+    
+    .info-row {
+        flex-direction: column;
+    }
+    
+    .info-row-label {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        padding: 10px 15px;
+    }
+    
+    .info-row-value {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs-nav {
+        flex-wrap: wrap;
+        border-radius: 12px;
+    }
+    
+    .tab-btn {
+        flex: 1 0 30%;
+        font-size: 0.75rem;
+    }
+    
+    .season-selector {
+        gap: 8px;
+    }
+    
+    .season-btn {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+    }
+}
+
+/* ==========================================================================
+   LÀMINA BOTÀNICA DE L'ARXIU (ESTIL SEGLE XIX)
+   ========================================================================== */
+.infographic-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 27, 16, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    overflow-y: auto; /* Permet el desplaçament vertical complet de la làmina horitzontal en pantalles no prou altes */
+}
+
+.infographic-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.infographic-modal {
+    position: relative;
+    width: 100%;
+    max-width: 1050px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto; /* Centra verticalment la làmina en cas d'scroll extern */
+}
+
+.info-controls-floating {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.btn-info-control {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: var(--transition-smooth);
+}
+
+.btn-info-control:hover {
+    background: var(--color-primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+#btn-close-sheet {
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 6px 12px;
+}
+
+.botanical-sheet-content {
+    background-image: url('imatges/01 Fons.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #111612; /* Tinta negra ferrogàl·lica */
+    font-family: var(--font-serif);
+    border: 3px double #111612;
+    padding: 30px 45px 25px 45px;
+    width: 100%;
+    aspect-ratio: 48 / 27; /* Mida rectangular exacta a proporció 48x27 (16:9) */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden; /* Evita barres de scroll internes lletges en favor del scroll de modal elegant si cal */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.botanical-sheet-content::-webkit-scrollbar {
+    width: 6px;
+}
+.botanical-sheet-content::-webkit-scrollbar-thumb {
+    background-color: #111612;
+    border-radius: 3px;
+}
+
+.sheet-header {
+    text-align: center;
+    border-bottom: 1.5px solid #111612;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.sheet-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #111612;
+    margin-bottom: 2px;
+}
+
+.sheet-scientific {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #333d35;
+    font-weight: 500;
+}
+
+.sheet-grid {
+    display: grid;
+    grid-template-columns: 28% 44% 28%;
+    gap: 15px;
+    flex-grow: 1;
+    align-items: stretch;
+}
+
+.sheet-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.sheet-quadrant {
+    border: 0.8px solid #111612;
+    padding: 12px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.quadrant-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 0.5px solid #111612;
+    padding-bottom: 3px;
+    color: #111612;
+}
+
+.quadrant-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    text-align: justify;
+    color: #222a23;
+}
+
+.sheet-center-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 0.8px solid #111612;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.svg-illustration {
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+}
+
+/* Símbol de seguretat a la base */
+.skull-circle {
+    position: absolute;
+    bottom: 12px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--color-toxic);
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.safety-warning-base {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--color-toxic);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 0.8px solid var(--color-toxic);
+    background: rgba(197, 48, 48, 0.04);
+    padding: 8px 12px;
+    border-radius: 2px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.family-watermark {
+    position: absolute;
+    font-size: 6.5rem;
+    opacity: 0.035;
+    font-weight: 800;
+    pointer-events: none;
+    text-transform: uppercase;
+    transform: rotate(-15deg);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   ESTILS D'IMPRESSIÓ PER A LÀMINA BOTÀNICA
+   ========================================================================== */
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+    
+    #info-modal-overlay,
+    #info-modal-overlay * {
+        visibility: visible !important;
+    }
+    
+    #info-modal-overlay {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+    
+    .infographic-modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .info-controls-floating {
+        display: none !important;
+    }
+    
+    .botanical-sheet-content {
+        visibility: visible !important;
+        border: none !important;
+        width: 297mm !important; /* Mida A4 horitzontal */
+        height: 167mm !important; /* Mida rectangular exacta a proporció 48x27 (16:9) en A4 */
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        margin: 0 !important;
+        padding: 25mm 20mm 15mm 20mm !important;
+        background-image: url('imatges/01 Fons.png') !important;
+        background-size: 100% 100% !important;
+        box-shadow: none !important;
+        page-break-after: avoid;
+        page-break-before: avoid;
+    }
+    
+    .sheet-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .sheet-scientific {
+        font-size: 1.3rem !important;
+    }
+    
+    .quadrant-title {
+        font-size: 0.95rem !important;
+    }
+    
+    .quadrant-text {
+        font-size: 0.9rem !important;
+    }
+    
+    .svg-illustration {
+        max-height: 480px !important;
+    }
+}
+
+/* Ajustos de responsive per a la làmina */
+@media (max-width: 900px) {
+    .botanical-sheet-content {
+        aspect-ratio: auto;
+        padding: 20px;
+    }
+    
+    .sheet-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .sheet-center-col {
+        order: -1;
+        min-height: 300px;
+    }
+}
+
+/* --- ESTILS DE LÀMINA BOTÀNICA ESTÀTICA PRE-GENERADA --- */
+.botanical-sheet-content.is-static {
+    padding: 0 !important;
+    border: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+.full-botanical-plate {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+@media print {
+    .botanical-sheet-content.is-static {
+        padding: 0 !important;
+        border: none !important;
+        background-image: none !important;
+        background-color: transparent !important;
+        width: 297mm !important;
+        height: 167mm !important; /* Mida rectangular exacta a proporció 48x27 (16:9) en A4 */
+    }
+    .botanical-sheet-content.is-static .full-botanical-plate {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        box-shadow: none !important;
+    }
+}
+
+/* ==========================================================================
+   ESTILS PER ALS BOTONS DE CAPÇALERA, NOTIFICACIONS I MENÚ INTERACTIU
+   ========================================================================== */
+.top-header-actions {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 150;
+    display: flex;
+    gap: 15px;
+}
+
+.action-icon-btn {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-smooth);
+    color: var(--color-primary);
+    outline: none;
+}
+
+.action-icon-btn:hover {
+    background: #ffffff;
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--color-accent);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: var(--color-toxic);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Panell de Notificacions Flotant */
+.notifications-panel {
+    position: absolute;
+    top: 85px;
+    right: 90px;
+    width: 350px;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    z-index: 160;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: notifFadeIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.notifications-panel.active {
+    display: flex;
+}
+
+@keyframes notifFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-primary-ultra-light);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.notif-header h4 {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.notif-close-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.notif-close-btn:hover {
+    color: var(--color-text-dark);
+}
+
+.notif-body {
+    display: flex;
+    flex-direction: column;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+}
+
+.notif-item:hover {
+    background-color: var(--color-bg-main);
+}
+
+.notif-item:last-child {
+    border-bottom: none;
+}
+
+.notif-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.notif-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.notif-text {
+    font-size: 0.82rem;
+    color: var(--color-text-dark);
+    line-height: 1.4;
+}
+
+.notif-time {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+}
+
+/* Calaix de Menú Lliscant (Hamburger Drawer) */
+.menu-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 27, 16, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 205;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-drawer-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.menu-drawer {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 420px;
+    height: 100%;
+    background: #ffffff;
+    border-left: 1px solid var(--color-border);
+    box-shadow: -5px 0 30px rgba(12, 27, 16, 0.15);
+    z-index: 210;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.menu-drawer.active {
+    right: 0;
+}
+
+.menu-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-primary-ultra-light);
+}
+
+.menu-drawer-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--color-primary);
+}
+
+.menu-drawer-close {
+    border: none;
+    background: transparent;
+    font-size: 1.8rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.menu-drawer-close:hover {
+    color: var(--color-text-dark);
+}
+
+/* Navegació del Menú */
+.menu-drawer-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.menu-nav-item {
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 12px 10px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.menu-nav-item:hover, .menu-nav-item.active {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px rgba(30, 63, 32, 0.15);
+}
+
+/* Contingut Dinàmic de Menú */
+.menu-drawer-content {
+    flex-grow: 1;
+    padding: 25px;
+    overflow-y: auto;
+    background-color: #fdfcf9;
+}
+
+/* Disseny d'estils interns de seccions de menú */
+.menu-section-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 5px;
+}
+
+/* 1. Glossari */
+.glossary-item {
+    margin-bottom: 15px;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+.glossary-term {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-primary-light);
+    margin-bottom: 4px;
+}
+
+.glossary-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* 2. Base de dades pendents */
+.pending-db-item {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--border-radius-sm);
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.pending-db-item:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-subtle);
+    border-color: var(--color-primary);
+}
+
+.pending-db-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pending-db-badge {
+    background: var(--color-toxic-bg);
+    color: var(--color-toxic);
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.pending-db-fields {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-top: 5px;
+}
+
+/* 3. Configuració */
+.config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.config-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 12px 15px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+.config-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.config-label {
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.config-desc {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+}
+
+/* Switch toggle premium */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e0;
+    transition: .3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* 4. Accés */
+.access-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.access-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.access-field label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.access-input {
+    padding: 10px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border);
+    outline: none;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    transition: var(--transition-smooth);
+}
+
+.access-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 63, 32, 0.08);
+}
+
+.access-btn {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+    margin-top: 10px;
+}
+
+.access-btn:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-1px);
+}
+
+/* Estil contrast alt aplicat dinàmicament */
+body.high-contrast {
+    --color-bg-main: #ffffff;
+    --color-bg-card: #000000;
+    --color-text-dark: #000000;
+    --color-primary: #000000;
+    --color-primary-light: #000000;
+    --color-accent: #000000;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.high-contrast .plant-card,
+body.high-contrast .tab-content-container,
+body.high-contrast .stat-card {
+    border: 3px solid #000000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.high-contrast .btn,
+body.high-contrast .tab-btn.active {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+/* Responsive per al Drawer del menú */
+@media (max-width: 480px) {
+    .menu-drawer {
+        width: 100%;
+        right: -100%;
+    }
+    .notifications-panel {
+        width: 290px;
+        right: 15px;
+        top: 80px;
+    }
+}
+
+/* --- ESTILS DE SUB-TABS (REMEIS / RECEPTES UNIFICATS) --- */
+.sub-tab-btn {
+    background-color: transparent;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.sub-tab-btn:hover:not(.active) {
+    background-color: var(--color-primary-ultra-light);
+    border-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.sub-tab-btn.active {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 4px 10px rgba(30, 63, 32, 0.15);
+}
+
+/* --- CAROUSEL DE CAMP --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #f7f5ef;
+}
+
+.carousel-slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.carousel-img:hover {
+    transform: scale(1.02);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    color: #ffffff;
+    padding: 25px 15px 12px 15px;
+    font-size: 0.8rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    z-index: 2;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-dark);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: #ffffff;
+    color: var(--color-primary);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-prev {
+    left: 12px;
+}
+
+.carousel-next {
+    right: 12px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.carousel-dot.active {
+    background: #ffffff;
+    transform: scale(1.2);
+}
+
+/* --- LIGHTBOX OVERLAY --- */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-caption {
+    margin-top: 15px;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 80%;
+    font-weight: 500;
+    font-family: var(--font-sans);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #f7fafc;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    color: var(--color-toxic);
+}
+
+/* ==========================================================================
+   VISTA DE XAT BOTÀNIC
+   ========================================================================== */
+.chat-container {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    max-width: 850px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-bot-avatar {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.chat-header-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+.chat-status-indicator {
+    font-size: 0.75rem;
+    color: var(--color-accent-light);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.chat-status-indicator::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background-color: #48bb78;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #48bb78;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #faf9f6;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-message {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    position: relative;
+    animation: messageFadeIn 0.3s ease-out;
+}
+
+@keyframes messageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-message.user {
+    background-color: var(--color-primary-light);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 3px 10px rgba(30, 63, 32, 0.12);
+}
+
+.chat-message.bot {
+    background-color: #ffffff;
+    color: var(--color-text-dark);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+}
+
+.chat-message-time {
+    font-size: 0.68rem;
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+    opacity: 0.6;
+}
+
+.chat-message.user .chat-message-time {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.chat-message.bot .chat-message-time {
+    color: var(--color-text-muted);
+}
+
+.chat-suggestions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #faf9f6;
+    border-top: 1px solid rgba(0,0,0,0.02);
+}
+
+.chat-suggestion-chip {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.chat-suggestion-chip:hover {
+    background: var(--color-primary-ultra-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.chat-input-wrapper {
+    padding: 15px 20px;
+    background: #ffffff;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.chat-input-wrapper input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 24px;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    outline: none;
+    background-color: #f7fafc;
+    transition: var(--transition-smooth);
+}
+
+.chat-input-wrapper input:focus {
+    background-color: #ffffff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 63, 32, 0.08);
+}
+
+#chat-send-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Enllaç especial cap a fitxa botànica de la planta */
+.chat-plant-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--color-primary-ultra-light);
+    color: var(--color-primary);
+    border: 1px solid rgba(30, 63, 32, 0.15);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.chat-plant-link:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+}
+
+.chat-plant-link::before {
+    content: '🌿';
+    font-size: 0.8rem;
+}
+
+/* Indicador que el bot està escrivint (typing indicator) */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-text-muted);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+.top-left-header-actions {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 999;
+    display: flex;
+    gap: 15px;
+}
+
+.chat-toggle-btn {
+    font-size: 1.4rem;
+}
+
+/* ==========================================================================
+   DRAWER DE XAT (Lliscant des de l'esquerra)
+   ========================================================================== */
+.chat-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 27, 16, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1150;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.chat-drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.chat-drawer {
+    position: fixed;
+    top: 0;
+    left: -460px; /* Amagat a l'esquerra per defecte */
+    width: 460px;
+    max-width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-main);
+    box-shadow: var(--shadow-medium);
+    z-index: 1200;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+}
+
+.chat-drawer.active {
+    left: 0;
+}
+
+.chat-drawer-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1ede2;
+}
+
+.chat-drawer-header h3 {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.chat-drawer-close {
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    line-height: 1;
+    transition: var(--transition-smooth);
+}
+
+.chat-drawer-close:hover {
+    color: var(--color-toxic);
+}
+
+.chat-drawer-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajust del contenidor dins del calaix */
+.chat-container {
+    height: 100%;
+    max-width: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .chat-message {
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-drawer {
+        width: 100%;
+        left: -100%;
+    }
+    
+    .chat-drawer.active {
+        left: 0;
+    }
+
+    .chat-message {
+        max-width: 90%;
+        font-size: 0.85rem;
+    }
+    .chat-header {
+        padding: 10px 15px;
+    }
+    .chat-bot-avatar {
+        width: 35px;
+        height: 35px;
+        font-size: 1.4rem;
+    }
+    .chat-input-wrapper {
+        padding: 10px 15px;
+    }
+}
+
+
+
+

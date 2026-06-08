@@ -1,0 +1,27 @@
+Completa la làmina seguint les regles d'estil de gravat del s.XIX configurades en aquest quadern.
+
+📐 MAQUETACIÓ I MARCS DE ESTRUCTURA:
+Retola cada secció a la cantonada superior esquerra interior de la seva capsa en format 'Lletra Majúscula. Text en minúscules':
+- TÍTOL SUPERIOR (Fora de marcs): "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMÚ]" i sota el nom científic en llatí i cursiva.
+- QUADRANT A (Dalt Esquerra) -> "A. Morfologia de la fulla i tija": Detall foliari i secció transversal de la tija.
+- QUADRANT B (Dalt Dreta) -> "B. Anatomia floral": Desglossament de peces florals i tipus d'inflorescència.
+- QUADRANT C (Baix Esquerra) -> "C. Sistema subterrani": Dibuix anatòmic de l'arrel o rizoma.
+- QUADRANT D (Baix Dreta) -> "D. Fructificació i llavors": Detall del fruit tancat, secció i llavors lliures.
+
+🌐 CONTROL LINGÜÍSTIC (ZERO ANGLÈS): Tot el text en català normatiu (nom en llatí). Prohibides paraules en anglès ("buds", "leaves", "roots", "seed", "and").
+
+⚠️ SECCIÓ DE TOXICITAT: Si a les dades s'indica que és tòxica, dibuixa una calavera negra en un cercle vermell a la base del Quadrant C amb l'alerta en majúscules. Si és segura, omet el símbol i el text.
+
+🔍 DETECCIÓ DINÀMICA DE FONTS VISUALS:
+Busca a les fonts els fitxers que comencin pel text de la línia "PLANTA:" amb els patrons: '[NOM]_01.jpg', '[NOM]_02.jpg', '[NOM]_fulla.jpg', '[NOM]_flor.jpg' i '[NOM]_fruit.jpg' com a referència anatòmica real sobre el llenç '01 Fons.jpg'.
+
+💉 DADES DE LA PLANTA PER A MAQUETAR:
+
+PLANTA: Acant (Acanthus mollis)
+FAMÍLIA: Acantàcies
+DETALLS TIJA: Escap floral robust, dret i cilíndric. Secció transversal com a cilindre vascular continu al voltant d'una gran medul·la central.
+DETALLS FULLA: Molt grans, profundament dividides en lòbuls, verd fosc, lluents i completament glabres (sense pèls), suaus al tacte.
+DETALLS FLOR: Labiades, blanques amb venes purpúries i bràctees espinoses porpres. Espiga terminal llarga i densa.
+DETALLS FRUIT: Càpsula ovoide dehiscent. Llavors grans, aplanades i fosques.
+DETALLS ARREL: Sistema radicular potent, arrels carnoses, gruixudes i profundes.
+TOXICITAT: Segura en ús tòpic (rica en mucílags i tanins protectors). Omet alertes de perill.

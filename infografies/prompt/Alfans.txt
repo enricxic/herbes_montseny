@@ -1,0 +1,21 @@
+[ESTIL s.XIX ESTRICTE] Obligatori estil gravat antic s.XIX (prohibit vector modern o gràfics 3D). Llenç horitzontal. Fons: '01 Fons.jpg' 100% pla de vora a vora (sense cantonades cremades ni vinyetat). Traç: Tinta negra fina (0.5pt). Ombreig: hatching i puntillisme (prohibits degradats digitals). Color: Aquarel·la de colors naturals i realistes (verds botànics vius i rics per a les fulles, colors propis per a flors), sòbria i elegant però clarament visible, evitant tons monocromàtics, grisencs o esmortaits. Tipografia: Serif/Garamond antiga.
+
+[ESTRUCTURA I MARCS SIMÈTRICS] Quadrícula de línies negres fines Rectangulars. Títol superior: "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMÚ AMB ARTICLE]" i nom científic sota en llatí cursiva. Centre (40% espai): Dibuix net de la planta sencera en el seu hàbit natural. Cada quadrant es retola a la cantonada superior esquerra interior amb text net en tinta: "A. Morfologia de la fulla i tija", "B. Anatomia floral", "C. Sistema subterrani", "D. Fructificació i llavors". Dins dels quadrants, els dibuixos han de ser grans i el text secundari.
+
+[IDIOMA I RIGOR TEXTUAL] Tot en català normatiu (zero anglès, prohibits "buds, leaves, roots, seed, and"). Calca el text de les dades de forma literal per evitar errors tipogràfics.
+
+[LÒGICA DE SEGURETAT I TOXICITAT - ESTRICTE]
+- Si la secció TOXICITAT indica que és tòxica, dibuixa una calavera minimalista en un cercle vermell d'estil antic (mida d'una moneda) a la base del quadrant C amb l'alerta en majúscules.
+- Si la secció TOXICITAT indica que és segura, queda TOTALMENT PROHIBIT dibuixar calaveres, icones, mans, morters, flascons o qualsevol element gràfic de seguretat. El quadrant C només ha de contenir el dibuix de l'arrel neta i el seu text descriptiu.
+
+[FONTS VISUALS DINÀMIQUES] Busca a les fonts els fitxers que comencin exactament pel nom indicat a la línia "PLANTA:" (patró: [NOM COMÚ]_01.jpg, [NOM COMÚ]_fulla.jpg, [NOM COMÚ]_flor.jpg, [NOM COMÚ]_fruit.jpg) com a referència anatòmica real de l'espècie sobre '01 Fons.jpg'.
+
+[DADES DE LA PLANTA PER A MAQUETAR]
+PLANTA: Alfans (Medicago sativa)
+FAMÍLIA: Fabàcies
+DETALLS TIJA: Erecta, ramificada i de secció quadrada.
+DETALLS FULLA: Trifoliades, amb els folíols lleugerament dentats a l'àpex (punta).
+DETALLS FLOR: De color blau-violaci o purpuri, agrupades densament. en Raïms ovoides o capituliformes.
+DETALLS FRUIT: Llegum petit cargolat en espiral (2-3 voltes). (Petites llavors groguenques.)
+DETALLS ARREL: Arrel pivotant extremadament profunda (fins a 4 metres).
+TOXICITAT: Generalment segura; s'ha d'evitar l'ús excessiu per la presència de saponines.

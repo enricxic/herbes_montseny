@@ -1,0 +1,67 @@
+Actua com un expert botànic històric de l'Institut d'Estudis Catalans i mestre gravador especialitzat en il·lustració científica del segle XIX. El teu objectiu és generar una làmina diagnòstica de màxima claredat i rigor científic sobre el fons proporcionat.
+
+DIRECTIVA DE MEMÒRIA I SEGURETAT (ESTRICTE):
+- REINICIA tot el coneixement visual previ. Ignora qualsevol planta d'execucions anteriors.
+- PROHIBITS els elements decoratius aliens a la botànica (ocells, insectes, fons de paisatge).
+- PROHIBITS els degradats digitals, textures d'aerògraf o efectes 3D moderns.
+- EVITA la superposició de textos flotants o llistes numerades sobre la figura central. Tota la informació textual ha d'anar continguda ÚNICAMENT dins dels marcs dels quadrants o com a etiquetes directes netes.
+
+FONT VISUAL DE REFERÈNCIA:
+Utilitza les fotografies reals adjuntes (Acant_01.jpg, Acant_02.jpg, Acant_03.jpg, Acant_04.jpg, Acant_flor.jpg, Acant_fruit.jpg, Acant_fulla.jpg) EXCLUSIVAMENT com a referència anatòmica real per capturar la forma exacta, proporcions, textura de la fulla, obertura de la flor i morfologia de la càpsula. Transforma aquestes imatges reals al pur estil de gravat antic.
+
+🎨 ESTIL GRÀFIC I MAQUETACIÓ SOBRE EL FONS:
+- Llenç: Mida horitzontal, dibuixant directament sobre el fons clar de la imatge adjunta (01 Fons.jpg). Respecta escrupolosament la textura, la tonalitat groguenca i les vores envellides del fons sense tapar-les.
+El fitxer '01 Fons.jpg' s'ha d'aplicar com a capa base de fons 100% plana, de vora a vora. Queda totalment prohibit afegir marcs cremats, taques fosques de vinyetat o vores degradades addicionals a les cantonades del llenç.
+
+- Traç i Ombreig: Tinta negra ferrogàl·lica ultra-fina (0.5pt) per als contorns. Ombreig tradicional mitjançant línies fines paral·leles (hatching), traços creuats i puntillisme suau.
+- Color: Aquarel·la plana, molt sòbria, dessaturada i d'estil d'època. Els colors han de quedar integrats harmònicament sobre el paper vell.
+- Tipografia: Lletra d'impremta antiga tipus Serif (estil Caslon, Garamond o lletra de llibres de ciència del s. XIX).
+- Estructura: Una quadrícula geomètrica neta delimitada per marcs rectangulars de línia negra simple i fina (0.5pt) per separar els quadrants analítics.
+
+🌐 CONTROL LINGÜÍSTIC ESTRICTE (ZERO TOLERÀNCIA A L'ANGLÈS):
+- Tot el text de la làmina (títols, subtítols, descripcions i etiquetes anatòmiques) ha d'estar escrit EXCLUSIVAMENT en llengua catalana corregida i normativa.
+- El nom científic de l'espècie ha d'anar en Llatí.
+- Queda totalment PROHIBIDA la inclusió de paraules en anglès (com "buds", "mallows", "leaves", "roots", "and", "seed") o qualsevol brossa textual generada per error del model. Revisa cada paraula abans de renderitzar.
+
+📐 DISTRIBUCIÓ DE LA LÀMINA (ESTRUCTURA DE MARCS):
+
+PROHIBICIÓ DE CORES INVERTITS: Queda totalment prohibit crear capses, rectangles o blocs de fons negre amb text blanc per als títols de secció. Tots els títols han de ser TEXT NET escrit directament en tinta fosca sobre el paper clar.
+
+SINTAXI DE TÍTOL DE QUADRANT (ESTRICTE): Cada quadrant tindrà el títol a la cantonada superior esquerra interior del seu requadre, seguint l'esquema d'una sola lletra majúscula seguida d'un punt i el text en minúscules (Exemple: 'A. Morfologia de la fulla i tija').
+
+1. TÍTOL CENTRAL SUPERIOR (Fora de marcs):
+   "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMÚ]" en majúscules d'impremta. Just a sota, el nom científic en llatí, en cursiva i mida més petita: "[Nom científic en llatí]".
+
+2. FIGURA CENTRAL (40% de l'espai central):
+   Il·lustració de la planta sencera en el seu hàbit de creixement natural, mostrant el port general, la roseta basal, el naixement de les fulles i l'espiga floral erecta.
+
+3. QUADRANT A (Dalt Esquerra) - MARCAT:
+   Títol del quadrant: "Morfologia de la fulla i tija".
+   Contingut visual: Dibuix detallat de la morfologia foliària i una secció anatòmica transversal que mostri l'estructura interna descrita a les dades.
+
+4. QUADRANT B (Dalt Dreta) - MARCAT:
+   Títol del quadrant: "Anatomia floral".
+   Contingut visual: Desglossament net de les peces florals (calze, corol·la, estams i pistil) i detall de la inflorescència.
+
+5. QUADRANT C (Baix Esquerra) - MARCAT:
+   Títol del quadrant: "Sistema subterrani".
+   Contingut visual: Dibuix anatòmic complet de l'arrel o rizoma.
+
+6. QUADRANT D (Baix Dreta) - MARCAT:
+   Títol del quadrant: "Fructificació i llavors".
+   Contingut visual: Detall del fruit tancat, en secció, i de les llavors lliures.
+
+⚠️ SECCIÓ DE SEGURETAT I TOXICITAT (BASE DE LA LÀMINA):
+- Si a la secció "TOXICITAT" s'indica que l'espècie és tòxica, dibuixa a la base (sota el Quadrant C) una calavera negra senzilla inscrita en un cercle vermell d'època. Al costat, afegeix el text d'alerta en lletres majúscules petites (Exemple: "⚠️ TÒXIC EN GRANS DOSIS.").
+- Si l'espècie es descriu com a segura, OMET completament qualsevol advertència o símbol de perill a la base.
+
+💉 INJECCIÓ DE DADES PER A L'EXECUCIÓ REIAL:
+
+PLANTA: Acant (Acanthus mollis)
+FAMÍLIA: Acantàcies
+DETALLS TIJA: Escap floral robust i dret que surt del centre de la roseta.
+DETALLS FULLA: Molt grans (fins a 50 cm), profundament dividides i lluents; elegants.
+DETALLS FLOR: Blanques amb bràctees espinoses de color porpra. en Espiga terminal llarga i densa.
+DETALLS FRUIT: Càpsula ovoide. (Llavors grans i negres.)
+DETALLS ARREL: Arrels carnoses i profundes.
+TOXICITAT: Segura en ús tòpic; conté mucílags que protegeixen la pell.

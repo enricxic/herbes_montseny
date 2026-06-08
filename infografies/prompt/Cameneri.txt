@@ -1,0 +1,53 @@
+Actua com un expert botànic històric i enginyer de prompts especialitzat en il·lustració científica del segle XIX. Vull que analitzis les nostres fonts per a l'espècie que et demanaré :
+
+DIRECTIVA DE MEMÒRIA: REINICIA tot el coneixement visual previ. Ignora qualsevol planta anterior. Prohibits elements decoratius (ocells, insectes). Estil de museu de ciències naturals del s. XIX.
+
+ROL: Il·lustrador botànic expert. Objectiu: Identificació científica diagnòstica de màxima claredat sobre el fons proporcionat. Utilitza la fotografia real adjunta (Artemisa.jpg) ÚNICAMENT com a referència anatòmica de la forma, estructura i proporcions de l'espècie, transformant-la completament a l'estil de gravat antic detallat en aquest prompt.
+
+
+IDIOMA ESTRICTE: Tot el text en Català (nom científic en llatí). Prohibida qualsevol paraula en anglès o un altre idioma.
+
+🎨 INTEGRACIÓ SOBRE EL FONS ADJUNT (ESTRICTE):
+
+Llenç: Mida 48x17 cm 72dpi. Dibuixa tota la infografia directament sobre el fons clar de la imatge adjunta (imatges/01 Fons.png). Respecta la seva tonalitat groga clara i les seves vores. 
+
+Traç i Color: Tinta negra ferrogàl·lica ultra-fina (0.5pt) per als contorns i textos. Color aquarel·lat pla, sobri i dessaturat que ressalti netament sobre el fons clar.
+
+Ombreig: Exclusivament mitjançant tècniques de gravat: traços fins paral·lels (hatching) i puntillisme. Prohibits els degradats digitals suaus o l'estil aerògraf.
+
+Tipografia: Font tipus Serif d'impremta antiga (Caslon o Garamond).
+
+Títol: Centrat a la part superior: "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMU]". Just a sota, el nom científic en llatí, cursiva i mida petita.
+
+Línies i Marcs: Quadrícula delimitada per marcs rectangulars de línia negra simple i fina (0.5pt).
+
+📐 ESTRUCTURA DE LA LÀMINA (DISTRIBUCIÓ):
+
+TÍTOL (Centrat Superior): "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMU]". Just a sota, el nom científic en llatí, cursiva i mida petita.
+
+FIGURA CENTRAL (40% espai): Planta completa en el seu hàbit natural (perenne, tija i arrels).
+
+QUADRANT A (Dalt Esquerra): DETALL DE LA FULLA I TIJA. Inclou superfície (pèls/glàndules) i secció transversal de la tija.
+
+QUADRANT B (Dalt Dreta): ANATOMIA FLORAL. Diagrama de la flor, peces florals i tipus d'inflorescència.
+
+QUADRANT C (Baix Esquerra): SISTEMA SUBTERRANI. Dibuix horitzontal del rizoma o arrels.
+
+QUADRANT D (Baix Dreta): FRUCTIFICACIÓ I LLAVOR. Detall del fruit, secció i llavor.
+
+🛡️ SECCIÓ DE SEGURETAT I TOXICITAT (A LA BASE):
+
+Símbol: Si l'espècie és tòxica, inclou una calavera negra dins d'un cercle vermell a la base de la figura central.
+
+Text d'Explicació: A la base, sota el quadrant C (Baix Esquerra), escriu una breu explicació de la toxicitat en lletres majúscules petites d'estil antic (Exemple: "⚠️ TÒXIC EN GRANS DOSIS. RISC ABORTIU."). Si l'espècie és segura, omet el símbol i el text.
+
+💉 INJECCIÓ DE DADES PER A L'EXECUCIÓ:
+
+PLANTA: Cameneri (Epilobium angustifolium)
+FAMÍLIA: Onagràcies
+DETALLS TIJA: Tija erecta, simple i sovint de color vermellós.
+DETALLS FULLA: Fulles alternes, estretes i lanceolades, similars a les del salze.
+DETALLS FLOR: Grans, de color rosa-purpuri, amb 4 pètals desiguals. en Raïm terminal llarg i lax.
+DETALLS FRUIT: Càpsula molt llarga i prima que s'obre longitudinalment. (Llavors amb un plomall de pèls blancs per volar amb el vent.)
+DETALLS ARREL: Rizoma reptant i carnós.
+TOXICITAT: Sense toxicitat notable; s'ha utilitzat tradicionalment sense efectes adversos documentats.

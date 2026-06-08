@@ -1,0 +1,4 @@
+Estil: Gravat botànic s.XIX de l'IEC. Fons: '01 Fons.jpg' aplicat pla de vora a vora, sense vinyetats ni cantonades cremades.
+Gràfics: Tinta negra ultra-fina (0.5pt) per a contorns i textos. Ombreig per hatching (traços paral·lels/creuats) i puntillisme, sense degradats digitals. Color: Aquarel·la plana, sòbria i dessaturada. Tipus: Serif (Garamond). Prohibits ocells, insectes o fons de paisatge.
+Textos: Prohibits fons negres amb lletres blanques (cores invertits). Tot el text és tinta fosca sobre fons clar. Prohibides llistes numerades flotants o fletxes sobre la figura central.
+Disseny: Títol central superior. Figura central (40% espai) amb planta sencera neta en el seu hàbit. Quadrants delimitats per marcs rectangulars negres (0.5pt).

@@ -1,0 +1,27 @@
+[PURGA DE MEMÒRIA REIAL - ENTRADA NOVA]
+- REINICIA, BORRA i OBLIDA completament qualsevol text, propietat medicinal, advertència o estructura de les plantes processades anteriorment (Acant, Agrimoni, Alfàbrega). Prohibida qualsevol referència a "anticoagulants" o "mucílags" si no s'indica expressament a les dades actuals. 
+
+[ESTIL s.XIX I FONS NET]
+- Obligatori estil gravat antic s.XIX (prohibit vector modern o gràfics 3D). Llenç horitzontal. Fons: '01 Fons.jpg' 100% pla de vora a vora. Queda TOTALMENT PROHIBIT afegir marques d'aigua, siluetes de fulles, ombres decoratives o estampats botànics florals al fons o als marges de la làmina.
+- Traç: Tinta negra fina (0.5pt). Ombreig: hatching i puntillisme. Color: Aquarel·la de colors vius i realistes (verds rics, colors propis de la flor). Tipografia: Serif/Garamond antiga d'impremta (PROHIBIDA SANS-SERIF O PARÀGRAFS EN MAJÚSCULES).
+
+[MARCS I RIGOR DE NOM]
+- Dibuixa 4 marcs rectangulars de línia negra simple i fina (0.5pt), un a cada cantonada. Columna central neta.
+- TÍTOL SUPERIOR: Agafa el nom COMPLET de la línia PLANTA i genera: "IL·LUSTRACIÓ BOTÀNICA DE L'ALL DE BRUIXA". Queda prohibit reduir-ho a "L'ALL". Just a sota, el nom científic exactament com s'indica: "Allium ursinum" en cursiva.
+- Retola els quadrants en minúscules amb lletra Serif neta: "A. Morfologia de la fulla i tija", "B. Anatomia floral", "C. Sistema subterrani", "D. Fructificació i llavors".
+
+[LÒGICA DE SEGURETAT - TEXT LITERAL]
+- No inventis dibuixos de seguretat. Si a TOXICITAT es demana olorar o hi ha una alerta, escriu ÚNICAMENT el text literal indicat a la base inferior de la làmina amb un triangle discret "⚠️". Prohibides les calaveres si no es demana la paraula "Tòxica/Mortal".
+
+[FONTS VISUALS DINÀMIQUES]
+- Busca a les fonts els fitxers de l'espècie que comencin pel text complet de la línia "PLANTA:" (patró: All de bruixa_01.jpg, All de bruixa_fulla.jpg...) per capturar l'anatomia real (fulla ampla, tija triangular, bulb allargat) sobre '01 Fons.jpg'.
+
+[DADES DE LA PLANTA PER A MAQUETAR]
+PLANTA: All de bruixa (Allium ursinum)
+FAMÍLIA: Amaril·lidàcies (Monocotiledònies)
+DETALLS TIJA: Tija floral neta de secció clarament triangular i sense fulles al llarg de l'escap.
+DETALLS FULLA: Fulles grans, amples, el·líptiques i peciolades (similars a les del lliri de maig), d'un verd brillant.
+DETALLS FLOR: Flors blanques en forma d'estrella amb sis tèpals apuntats, agrupades en una umbel·la terminal arrodonida que neix d'una bràctea protectora.
+DETALLS FRUIT: Càpsula petita de tres lòbuls amb poques llavors globoses i negres a l'interior.
+DETALLS ARREL: Sistema subterrani format per un bulb allargat, estret i completament blanc, sense túniques dures o de color.
+TOXICITAT: Atenció: les fulles es poden confondre visualment amb les del Maiguet (Convallaria majalis), que és altament tòxic. És imprescindible olorar-les per verificar la forta fragància d'all. Inclou text a la base: "⚠️ ATENCIÓ: CONFUSIÓ VISUAL AMB EL MAIGUET TÒXIC. CAL VERIFICAR L'OLOR D'ALL."

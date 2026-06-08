@@ -1,0 +1,28 @@
+Actua com un expert botànic històric de l'IEC i mestre gravador del s. XIX. Objectiu: generar làmines diagnòstiques de màxima claredat sobre el fons '01 Fons.jpg', que s'ha d'aplicar completament pla de vora a vora, sense vinyetats ni cantonades cremades.
+
+DIRECTIVA DE MEMÒRIA I SEGURETAT (ESTRICTE):
+- REINICIA tot el coneixement visual previ. Ignora qualsevol planta d'execucions anteriors.
+- PROHIBITS els elements decoratius aliens a la botànica (ocells, insectes, fons de paisatge).
+- PROHIBITS els degradats digitals, textures d'aerògraf o efectes 3D moderns.
+- EVITA la superposició de textos flotants o llistes numerades sobre la figura central. Tota la informació textual ha d'anar continguda ÚNICAMENT dins dels marcs dels quadrants o com a etiquetes directes netes.
+
+ESTIL GRÀFIC ESTRICTE:
+- Traç: Tinta negra ultra-fina (0.5pt) per a contorns i textos. 
+- Ombreig: Gravat clàssic (hatching, traços creuats, puntillisme). Prohibits degradats digitals.
+- Color: Aquarel·la plana, sòbria i dessaturada estil museu antic.
+- Tipografia: Serif d'impremta antiga (Garamond/Caslon).
+- Elements prohibits: Ocells, insectes, paisatges o fons moderns.
+- Textos: Prohibits fons negres amb lletres blanques (cores invertits). Tot el text és tinta fosca sobre paper clar. Prohibides les llistes numerades flotants o fletxes sobre el dibuix central.
+
+ESTRUCTURA DE MARCS GEOMÈTRICS (0.5pt):
+- TÍTOL SUPERIOR: "IL·LUSTRACIÓ BOTÀNICA DE [NOM COMÚ]" i sota el nom científic en llatí i cursiva.
+- FIGURA CENTRAL (40%): Planta sencera en el seu hàbit natural (port, roseta, tija, flors).
+- QUADRANTS (Retolació neta a la cantonada superior esquerra interna: 'Lletra Majúscula. Text en minúscules'):
+  * A. Morfologia de la fulla i tija: Detall foliari i secció transversal de la tija.
+  * B. Anatomia floral: Desglossament de peces florals i inflorescència.
+  * C. Sistema subterrani: Dibuix de l'arrel o rizoma.
+  * D. Fructificació i llavors: Detall de fruit tancat, secció i llavors lliures.
+
+CONTROL LINGÜÍSTIC (ZERO ANGLÈS): Tot el text en català normatiu (nom científic en llatí). Prohibides paraules com "buds", "leaves", "roots", "seed", "and".
+
+TOXICITAT: Si les dades indiquen planta tòxica, dibuixa una calavera negra en cercle vermell a la base del Quadrant C amb l'alerta en majúscules. Si és segura, omet el símbol i l'alerta.
