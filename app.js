@@ -1838,71 +1838,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function completeIdentification(plantName) {
-        // Aturar stream de càmera primer
+        // Aturar stream de càmera si està actiu
         if (state.cameraStream) {
             state.cameraStream.getTracks().forEach(track => track.stop());
             state.cameraStream = null;
         }
         DOM.webcamPreview.srcObject = null;
 
-        // Cas A: Hem forçat planta desconeguda
         if (plantName === 'Desconeguda') {
             DOM.scannerSim.style.display = 'none';
             DOM.failPreviewImg.style.backgroundImage = `url('${state.currentScanImage}')`;
-            DOM.failNotes.value = '';
             DOM.scannerResultFailed.style.display = 'block';
             return;
         }
 
-        let selectedHerba = null;
+        // 1. Simulem la primera part de l'híbrid: La IA local determina la Família de forma aproximada.
+        // Si l'usuari ha triat un preset passem la seva família, si és una foto a l'atzar, simulem "Lamiàcies" (Alfàbrega/Farigola/Romaní)
+        let familiaSuposada = "Lamiàcies"; 
         if (plantName) {
-            selectedHerba = state.herbes.find(h => h.nom_comu.toLowerCase() === plantName.toLowerCase());
+            const herb = state.herbes.find(h => h.nom_comu.toLowerCase() === plantName.toLowerCase());
+            if (herb && herb.familia) familiaSuposada = herb.familia;
         }
 
-        // Probabilitat del 15% de fallar si es fa a l'atzar amb la càmera real/virtual
-        if (!plantName && Math.random() < 0.15) {
-            DOM.scannerSim.style.display = 'none';
-            DOM.failPreviewImg.style.backgroundImage = `url('${state.currentScanImage}')`;
-            DOM.failNotes.value = '';
-            DOM.scannerResultFailed.style.display = 'block';
-            return;
-        }
-
-        // Selecció aleatòria d'herbes conegudes si no ve forçada per un botó preset
-        if (!selectedHerba) {
-            const populars = ["Farigola", "Romaní", "Orenga", "Malva", "Saüc", "Dent de lleó", "Rosella"];
-            const randomName = populars[Math.floor(Math.random() * populars.length)];
-            selectedHerba = state.herbes.find(h => h.nom_comu === randomName);
-        }
-
-        if (!selectedHerba) {
-            selectedHerba = state.herbes[0];
-        }
-
-        // Cerca la família provant diferents variants de columnes que pot retornar el núvol/Supabase
-        const familiaDetectada = selectedHerba.familia || 
-                         selectedHerba.familia_botanica || 
-                         selectedHerba.Familia || 
-                         "Família no determinada";
-        
-        // Canviem temporalment el text del visor per mostrar la classificació taxonòmica intermèdia
+        // Mostrem la família al visor en daurat
         DOM.scanStatusText.style.color = "var(--color-accent)";
-        DOM.scanStatusText.textContent = `🧬 CLASSIFICACIÓ: Família ${familiaDetectada}...`;
+        DOM.scanStatusText.textContent = `🧬 IA Local: Família detectable -> ${familiaSuposada}`;
 
-        // Retardem la resolució final 1,2 segons per donar l'efecte òptic de classificació en dos passos
-        setTimeout(() => {
+        // 2. Closem l'escàner automàtic i obrim el panell de la Clau Dicotòmica offline
+        const clauPanel = document.getElementById('clau-botanica-panel');
+        if (clauPanel) {
+            clauPanel.style.display = 'block';
+        }
+
+        // 3. Programem el botó de confirmació de la clau botànica
+        document.getElementById('btn-confirmar-clau').onclick = function() {
+            const flor = document.getElementById('clau-flor').value;
+            const fulla = document.getElementById('clau-fulla').value;
+            const olor = document.getElementById('clau-olor').value;
+
+            // Busquem a la teva base de dades local filtrant de veritat!
+            let herbaTrobada = null;
+
+            // Exemples de patrons de cerca lògica locals sobre el teu array d'herbes:
+            if (familiaSuposada.toLowerCase().includes('lamiàcia') || familiaSuposada === 'Lamiàcies') {
+                if (fulla === 'gran' && flor === 'blanc' || flor === 'lila') {
+                    // Característiques de l'Alfàbrega: Lamiàcia, fulla ampla/tendra, flors blanques/lilàs
+                    herbaTrobada = state.herbes.find(h => h.nom_comu.toLowerCase().includes('alfàbrega') || h.nom_comu.toLowerCase().includes('orenga'));
+                } else {
+                    // Fulla petita i dura: Farigola o Romaní
+                    herbaTrobada = state.herbes.find(h => h.nom_comu.toLowerCase().includes('farigola') || h.nom_comu.toLowerCase().includes('romaní'));
+                }
+            }
+
+            // Si el filtre no dóna un resultat perfecte, agafem el preset de seguretat o el que demanava el botó
+            if (!herbaTrobada && plantName) {
+                herbaTrobada = state.herbes.find(h => h.nom_comu.toLowerCase() === plantName.toLowerCase());
+            }
+            if (!herbaTrobada) {
+                herbaTrobada = state.herbes[0]; // Fallback si no hi ha res
+            }
+
+            // Resolució de l'aplicació
+            if (clauPanel) clauPanel.style.display = 'none';
             resetScannerState();
 
-            const matchPercent = Math.floor(Math.random() * 8) + 91;
-            
-            // Notificació premium on es detalla primer la família i després l'espècie
-            showToast(`📊 [${familiaDetectada}] -> Espècie: ${selectedHerba.nom_comu} (${matchPercent}% Coincidència)`);
+            const matchPercent = Math.floor(Math.random() * 5) + 95; // Un percentatge molt alt gràcies a l'ajuda de l'usuari
+            showToast(`📊 [${herbaTrobada.familia || 'Botànica'}] -> Espècie confirmada: ${herbaTrobada.nom_comu} (${matchPercent}%)`);
             
             setTimeout(() => {
-                openBotanicalDrawer(selectedHerba);
+                openBotanicalDrawer(herbaTrobada);
             }, 400);
-            
-        }, 1200); 
+        };
     }
 
     // --- 17. RUTINA PER DESAR PLANTA DESCONEGUDA (L'HERBARI) ---

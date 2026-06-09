@@ -177,7 +177,69 @@
                             Buscar foto
                         </button>
                         <input type="file" id="file-input" accept="image/*" style="display: none;">
+                    </div>  
+
+                    <div class="scanner-simulation" id="scanner-sim" style="display: none;">
+                        <div class="sim-viewfinder">
+                            <video id="webcam-preview" autoplay playsinline style="display: none;"></video>
+                            <div class="sim-forest-bg" id="sim-forest"></div>
+                            <div class="scan-laser"></div>
+                            <div class="scan-status" id="scan-status-text">Iniciant càmera...</div>
+                        </div>
+
+                        <div id="clau-botanica-panel" style="display: none; margin: 15px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid var(--color-accent);">
+                            <h4 style="margin-top: 0; color: var(--color-accent); font-family: serif; font-size: 1.1rem; display: flex; align-items: center; gap: 6px;">
+                                🌿 Clau Dicotòmica d'Esmena (Mode Offline)
+                            </h4>
+                            <p style="font-size: 0.85rem; margin-bottom: 12px; color: #cbd5e0;">
+                                La IA local ha detectat l'estructura general. Per concretar l'espècie sense cobertura al bosc, respon:
+                            </p>
+                            
+                            <div style="margin-bottom: 10px;">
+                                <label style="display:block; font-size: 0.8rem; margin-bottom: 4px; color: #e2e8f0;">1. Color predominant de la flor:</label>
+                                <select id="clau-flor" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:6px; border-radius:4px; font-size: 0.85rem;">
+                                    <option value="blanc">Blanc / Crema</option>
+                                    <option value="lila">Lila / Rosat / Blau</option>
+                                    <option value="groc">Groc / Ataronjat</option>
+                                    <option value="verd">Verdós / Sense flor vistosa</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <label style="display:block; font-size: 0.8rem; margin-bottom: 4px; color: #e2e8f0;">2. Mida i textura de la fulla:</label>
+                                <select id="clau-fulla" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:6px; border-radius:4px; font-size: 0.85rem;">
+                                    <option value="petita">Petita, estreta o dures (tipus matorral)</option>
+                                    <option value="gran">Ample, tendra o gran (com l'alfàbrega)</option>
+                                    <option value="dividida">Molt dividida (tipus lofre o falguera)</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="display:block; font-size: 0.8rem; margin-bottom: 4px; color: #e2e8f0;">3. Propietat aromàtica notable:</label>
+                                <select id="clau-olor" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:6px; border-radius:4px; font-size: 0.85rem;">
+                                    <option value="si">Molt aromàtica (aroma intens en fregar)</option>
+                                    <option value="no">Olor herbaria comuna o inodora</option>
+                                </select>
+                            </div>
+
+                            <button id="btn-confirmar-clau" type="button" style="width:100%; background:var(--color-accent); color:black; border:none; padding:8px; font-weight:bold; cursor:pointer; border-radius:4px; font-size: 0.9rem; transition: background 0.2s;">
+                                Determinar Espècie 🔍
+                            </button>
+                        </div>
+                        <div class="scanner-presets" id="preset-selector" style="display: none;">
+                            <p class="preset-title">O tria una d'aquestes mostres reals per escanejar:</p>
+                            <div class="preset-grid">
+                                <button class="preset-btn" data-plant="Orenga">🍀 Mostra 1 (Orenga)</button>
+                                <button class="preset-btn" data-plant="Farigola">🌿 Mostra 2 (Farigola)</button>
+                                <button class="preset-btn" data-plant="Teix">⚠️ Mostra 3 (Teix - Tòxica)</button>
+                                <button class="preset-btn preset-btn-alert" data-plant="Desconeguda" style="border-color: #cbd5e0; background: #fff5f5;">❓ Planta Desconeguda</button>
+                            </div>
+                        </div>
+                        <div class="sim-controls">
+                            <button class="btn btn-alert" id="btn-cancel-scan">Cancel·lar</button>
+                        </div>
                     </div>
+
 
                     <!-- Contenidor de Simulació Activa -->
                     <div class="scanner-simulation" id="scanner-sim" style="display: none;">
@@ -187,6 +249,7 @@
                             <div class="scan-laser"></div>
                             <div class="scan-status" id="scan-status-text">Iniciant càmera...</div>
                         </div>
+                        
                         <div class="scanner-presets" id="preset-selector" style="display: none;">
                             <p class="preset-title">O tria una d'aquestes mostres reals per escanejar:</p>
                             <div class="preset-grid">
