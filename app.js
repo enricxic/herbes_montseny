@@ -991,9 +991,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         Afegir imatge de camp
                     </button>
                     <input type="file" id="input-gallery-file" accept="image/*" style="display: none;">
-                    <button class="btn" id="btn-help-gallery" title="Com afegir fotos permanents al disc" style="font-size: 0.85rem; padding: 0; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-border); background: transparent; color: var(--color-text-muted); cursor: pointer;">
-                        ❓
-                    </button>
                 </div>
             </div>
         `;
@@ -1199,7 +1196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Activar la pujada d'imatges de camp a la galeria
         const btnAddImage = DOM.drawerContent.querySelector('#btn-add-gallery-image');
         const inputGalleryFile = DOM.drawerContent.querySelector('#input-gallery-file');
-        const btnHelpGallery = DOM.drawerContent.querySelector('#btn-help-gallery');
         
         if (btnAddImage && inputGalleryFile) {
             btnAddImage.addEventListener('click', () => {
@@ -1400,11 +1396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (btnHelpGallery) {
-            btnHelpGallery.addEventListener('click', () => {
-                alert(`📂 COM INTEGRAR FOTOS DES DEL TEU DISC DUR (AUTO-ACTUALITZACIÓ):\n\nL'aplicació cerca automàticament fitxers físics a la carpeta "imatges/galeria/${slugify(herba.nom_comu)}/" amb noms i sufixos concrets:\n\n- Imatge general: "general.jpg" o "${slugify(herba.nom_comu)}.jpg"\n- Detall Fulles: "fulla.jpg" o "${slugify(herba.nom_comu)}_fulla.jpg"\n- Detall Flors: "flor.jpg" o "${slugify(herba.nom_comu)}_flor.jpg"\n- Detall Fruits: "fruit.jpg" o "${slugify(herba.nom_comu)}_fruit.jpg"\n\n💡 Si guardes les teves fotos amb aquests noms en la seva respectiva carpeta, el catàleg les detectarà i mostrarà automàticament sense necessitat d'actualitzar cap base de dades sqlite.`);
-            });
-        }
+
 
         const openInfoBtn = document.getElementById('btn-open-infographic');
         if (openInfoBtn) {
@@ -1853,7 +1845,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         DOM.webcamPreview.srcObject = null;
 
-        // Cas A: Hem forçat planta desconeguda (el nou botó del simulador o foto desconeguda)
+        // Cas A: Hem forçat planta desconeguda
         if (plantName === 'Desconeguda') {
             DOM.scannerSim.style.display = 'none';
             DOM.failPreviewImg.style.backgroundImage = `url('${state.currentScanImage}')`;
@@ -1867,8 +1859,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedHerba = state.herbes.find(h => h.nom_comu.toLowerCase() === plantName.toLowerCase());
         }
 
-        // Si es fa per simulació de càmera general, a vegades hi ha una petita probabilitat del 15% de fallar
-        // per poder provar la nova funció d'error de forma natural sense forçar presets!
+        // Probabilitat del 15% de fallar si es fa a l'atzar amb la càmera real/virtual
         if (!plantName && Math.random() < 0.15) {
             DOM.scannerSim.style.display = 'none';
             DOM.failPreviewImg.style.backgroundImage = `url('${state.currentScanImage}')`;
@@ -1877,7 +1868,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Selecció aleatòria d'herbes conegudes
+        // Selecció aleatòria d'herbes conegudes si no ve forçada per un botó preset
         if (!selectedHerba) {
             const populars = ["Farigola", "Romaní", "Orenga", "Malva", "Saüc", "Dent de lleó", "Rosella"];
             const randomName = populars[Math.floor(Math.random() * populars.length)];
@@ -1888,14 +1879,27 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedHerba = state.herbes[0];
         }
 
-        resetScannerState();
-
-        const matchPercent = Math.floor(Math.random() * 8) + 91;
-        showToast(`📊 Planta identificada: ${selectedHerba.nom_comu} (${matchPercent}% coincidència)`);
+        // === NOVA LÒGICA DE CLASSIFICACIÓ PRÈVIA PER FAMÍLIA ===
+        const familiaDetectada = selectedHerba.familia || "Família no determinada";
         
+        // Canviem temporalment el text del visor per mostrar la classificació taxonòmica intermèdia
+        DOM.scanStatusText.style.color = "var(--color-accent)";
+        DOM.scanStatusText.textContent = `🧬 CLASSIFICACIÓ: Família ${familiaDetectada}...`;
+
+        // Retardem la resolució final 1,2 segons per donar l'efecte òptic de classificació en dos passos
         setTimeout(() => {
-            openBotanicalDrawer(selectedHerba);
-        }, 400);
+            resetScannerState();
+
+            const matchPercent = Math.floor(Math.random() * 8) + 91;
+            
+            // Notificació premium on es detalla primer la família i després l'espècie
+            showToast(`📊 [${familiaDetectada}] -> Espècie: ${selectedHerba.nom_comu} (${matchPercent}% Coincidència)`);
+            
+            setTimeout(() => {
+                openBotanicalDrawer(selectedHerba);
+            }, 400);
+            
+        }, 1200); 
     }
 
     // --- 17. RUTINA PER DESAR PLANTA DESCONEGUDA (L'HERBARI) ---
