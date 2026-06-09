@@ -1879,8 +1879,11 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedHerba = state.herbes[0];
         }
 
-        // === NOVA LÒGICA DE CLASSIFICACIÓ PRÈVIA PER FAMÍLIA ===
-        const familiaDetectada = selectedHerba.familia || "Família no determinada";
+        // Cerca la família provant diferents variants de columnes que pot retornar el núvol/Supabase
+        const familiaDetectada = selectedHerba.familia || 
+                         selectedHerba.familia_botanica || 
+                         selectedHerba.Familia || 
+                         "Família no determinada";
         
         // Canviem temporalment el text del visor per mostrar la classificació taxonòmica intermèdia
         DOM.scanStatusText.style.color = "var(--color-accent)";
