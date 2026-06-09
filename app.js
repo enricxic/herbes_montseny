@@ -3816,3 +3816,9 @@ Si una planta presenta toxicitat segons el catàleg, adverteix clarament de les 
     // --- 20. INICIAR L'APLICACIÓ ---
     loadData();
 });
+
+// Truc d'emergència per forçar l'encesa de la web
+setTimeout(() => {
+    const spinner = document.querySelector('.loading-spinner');
+    if (spinner) spinner.style.display = 'none';
+}, 2000);
