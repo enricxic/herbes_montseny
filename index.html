@@ -5,35 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arxiu Botànic del Montseny - Herbes Medicinals</title>
     <meta name="description" content="Explora el catàleg complet d'herbes medicinals del Montseny. Informació científica, morfologia, remeis, receptes i identificació botànica.">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <!-- Estils principals -->
     <link rel="stylesheet" href="styles.css?v=1.0.4">
-    <!-- Client de Supabase per al núvol -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
  
-    <!-- ACCIONS DE CAPÇALERA SUPERIOR ESQUERRA (Xat Flotant) -->
     <div class="top-left-header-actions">
-        <!-- Icona de Xat Botànic -->
         <button class="action-icon-btn chat-toggle-btn" id="btn-chat-toggle" aria-label="Obrir Xat Botànic">
             🤖
         </button>
     </div>
 
-    <!-- ACCIONS DE CAPÇALERA SUPERIOR DRETA (Notificacions i Menú d'Hamburguesa) -->
     <div class="top-header-actions">
-        <!-- Icona de Campaneta de notificacions -->
         <button class="action-icon-btn" id="btn-notifications" aria-label="Notificacions">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
             <span class="notification-badge" id="notif-badge">3</span>
         </button>
-        <!-- Icona de Menú d'Hamburguesa -->
         <button class="action-icon-btn" id="btn-hamburger" aria-label="Menú principal">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -43,7 +35,6 @@
         </button>
     </div>
 
-    <!-- PANELL DE NOTIFICACIONS (DROP-DOWN MODAL FLOTANT) -->
     <div class="notifications-panel" id="notifications-panel">
         <div class="notif-header">
             <h4>🔔 Missatges pendents</h4>
@@ -74,7 +65,6 @@
         </div>
     </div>
 
-    <!-- DRAWER DE XAT (Lliscant des de l'esquerra) -->
     <div class="chat-drawer-overlay" id="chat-drawer-overlay"></div>
     <div class="chat-drawer" id="chat-drawer" role="dialog" aria-modal="true">
         <div class="chat-drawer-header">
@@ -92,12 +82,10 @@
                 </div>
                 
                 <div class="chat-messages" id="chat-messages-container">
-                    <!-- Els missatges es generaran dinàmicament per JS -->
-                </div>
+                    </div>
                 
                 <div class="chat-suggestions-container" id="chat-suggestions">
-                    <!-- Suggeriments generats per JS -->
-                </div>
+                    </div>
                 
                 <div class="chat-input-wrapper">
                     <input type="text" id="chat-input" placeholder="Pregunta sobre herbes medicinals, receptes..." aria-label="Missatge de xat">
@@ -112,7 +100,6 @@
         </div>
     </div>
 
-    <!-- DRAWER DE MENÚ PRINCIPAL (Lliscant des de la dreta) -->
     <div class="menu-drawer-overlay" id="menu-drawer-overlay"></div>
     <div class="menu-drawer" id="menu-drawer" role="dialog" aria-modal="true">
         <div class="menu-drawer-header">
@@ -126,19 +113,15 @@
             <button class="menu-nav-item" id="menu-btn-acces">🔒 Accés / Permisos</button>
         </nav>
         <div class="menu-drawer-content" id="menu-drawer-dynamic-content">
-            <!-- El contingut dinàmic (glossari, camps buits, accés o configuració) es carregarà aquí des de JS -->
-        </div>
+            </div>
     </div>
 
-    <!-- HERO SECTION / CAPÇALERA PANTALLA COMPLETA -->
     <header class="hero-section">
         <div class="hero-content">
-            <!-- Capçalera Glassmorphic elegant per contrastar amb la imatge clara -->
             <div class="hero-title-container">
                 <h1 class="hero-title">ARXIU BOTÀNIC DEL MONTSENY</h1>
                 <p class="hero-subtitle">Herbes medicinals • Remeis • Natura</p>
                 
-                <!-- Estadístiques integrades -->
                 <div class="stats-container">
                     <div class="stat-card" id="card-plants">
                         <span class="stat-number" id="stat-plants">207</span>
@@ -155,7 +138,6 @@
                 </div>
             </div>
 
-            <!-- SECCIÓ IDENTIFICACIÓ SOBRE EL FONS DEL HERO -->
             <section class="scanner-section" id="scanner-block">
                 <div class="scanner-card">
                     <div class="scanner-header">
@@ -187,45 +169,61 @@
                             <div class="scan-status" id="scan-status-text">Iniciant càmera...</div>
                         </div>
 
-                        <div id="clau-botanica-panel" style="display: none; margin: 15px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px solid var(--color-accent);">
-                            <h4 style="margin-top: 0; color: var(--color-accent); font-family: serif; font-size: 1.1rem; display: flex; align-items: center; gap: 6px;">
-                                🌿 Clau Dicotòmica d'Esmena (Mode Offline)
-                            </h4>
-                            <p style="font-size: 0.85rem; margin-bottom: 12px; color: #cbd5e0;">
-                                La IA local ha detectat l'estructura general. Per concretar l'espècie sense cobertura al bosc, respon:
-                            </p>
+                        <div id="clau-botanica-panel" style="display: none; margin: 15px; padding: 15px; background: rgba(0,0,0,0.65); border-radius: 8px; border: 1px solid var(--color-accent);">
+                            <h4 style="margin-top: 0; color: var(--color-accent); font-family: serif; font-size: 1.1rem;">🌿 Clau Dicotòmica d'Alta Precisió (Offline)</h4>
+                            <p style="font-size: 0.85rem; margin-bottom: 12px; color: #cbd5e0;">La IA local ha acotat el grup botànic. Per acabar de confirmar l'espècie sense internet, descriu la morfologia:</p>
                             
-                            <div style="margin-bottom: 10px;">
-                                <label style="display:block; font-size: 0.8rem; margin-bottom: 4px; color: #e2e8f0;">1. Color predominant de la flor:</label>
-                                <select id="clau-flor" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:6px; border-radius:4px; font-size: 0.85rem;">
+                            <div style="margin-bottom: 8px;">
+                                <label style="display:block; font-size: 0.8rem; color:#e2e8f0; margin-bottom: 2px;">1. Color de la flor:</label>
+                                <select id="clau-flor" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:5px; border-radius:4px;">
+                                    <option value="lila">Lila / Blau / Rosat</option>
                                     <option value="blanc">Blanc / Crema</option>
-                                    <option value="lila">Lila / Rosat / Blau</option>
                                     <option value="groc">Groc / Ataronjat</option>
+                                    <option value="vermell">Vermell / Clar</option>
                                     <option value="verd">Verdós / Sense flor vistosa</option>
                                 </select>
                             </div>
 
-                            <div style="margin-bottom: 10px;">
-                                <label style="display:block; font-size: 0.8rem; margin-bottom: 4px; color: #e2e8f0;">2. Mida i textura de la fulla:</label>
-                                <select id="clau-fulla" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:6px; border-radius:4px; font-size: 0.85rem;">
-                                    <option value="petita">Petita, estreta o dures (tipus matorral)</option>
-                                    <option value="gran">Ample, tendra o gran (com l'alfàbrega)</option>
-                                    <option value="dividida">Molt dividida (tipus lofre o falguera)</option>
+                            <div style="margin-bottom: 8px;">
+                                <label style="display:block; font-size: 0.8rem; color:#e2e8f0; margin-bottom: 2px;">2. Tipus de fulla:</label>
+                                <select id="clau-fulla" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:5px; border-radius:4px;">
+                                    <option value="gran">Gran / Ample i tendra (com l'alfàbrega o orenga)</option>
+                                    <option value="petita">Petita / Estreta i dura (com farigola o romaní)</option>
+                                    <option value="dividida">Molt dividida / Retallada</option>
                                 </select>
                             </div>
 
-                            <div style="margin-bottom: 15px;">
-                                <label style="display:block; font-size: 0.8rem; margin-bottom: 4px; color: #e2e8f0;">3. Propietat aromàtica notable:</label>
-                                <select id="clau-olor" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:6px; border-radius:4px; font-size: 0.85rem;">
-                                    <option value="si">Molt aromàtica (aroma intens en fregar)</option>
-                                    <option value="no">Olor herbaria comuna o inodora</option>
+                            <div style="margin-bottom: 8px;">
+                                <label style="display:block; font-size: 0.8rem; color:#e2e8f0; margin-bottom: 2px;">3. Disposició de les flors:</label>
+                                <select id="clau-flors-grup" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:5px; border-radius:4px;">
+                                    <option value="espiga">En línia / Espiga llarga ascendent (Verticils)</option>
+                                    <option value="pom">En poms arrodonits / Ramets compactes</option>
+                                    <option value="solitaria">Flors grans i solitàries</option>
                                 </select>
                             </div>
 
-                            <button id="btn-confirmar-clau" type="button" style="width:100%; background:var(--color-accent); color:black; border:none; padding:8px; font-weight:bold; cursor:pointer; border-radius:4px; font-size: 0.9rem; transition: background 0.2s;">
-                                Determinar Espècie 🔍
+                            <div style="margin-bottom: 8px;">
+                                <label style="display:block; font-size: 0.8rem; color:#e2e8f0; margin-bottom: 2px;">4. Port de la planta:</label>
+                                <select id="clau-port" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:5px; border-radius:4px;">
+                                    <option value="herba">Herba tova / Planta flexible de terra</option>
+                                    <option value="arbust">Mata llenyosa / Subarbust rígid</option>
+                                    <option value="arbre">Arbre / Arbust gran</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 12px;">
+                                <label style="display:block; font-size: 0.8rem; color:#e2e8f0; margin-bottom: 2px;">5. Aroma en fregar la fulla:</label>
+                                <select id="clau-olor" style="width:100%; background:#1a202c; color:#fff; border:1px solid #4a5568; padding:5px; border-radius:4px;">
+                                    <option value="si">Sí, molt aromàtica / Olor forta</option>
+                                    <option value="no">Inodora / Olor verda comuna</option>
+                                </select>
+                            </div>
+
+                            <button id="btn-confirmar-clau" type="button" style="width:100%; background:var(--color-accent); color:black; border:none; padding:8px; font-weight:bold; cursor:pointer; border-radius:4px;">
+                                Confirmar Diagnòstic Híbrid 🔍
                             </button>
                         </div>
+
                         <div class="scanner-presets" id="preset-selector" style="display: none;">
                             <p class="preset-title">O tria una d'aquestes mostres reals per escanejar:</p>
                             <div class="preset-grid">
@@ -240,31 +238,6 @@
                         </div>
                     </div>
 
-
-                    <!-- Contenidor de Simulació Activa -->
-                    <div class="scanner-simulation" id="scanner-sim" style="display: none;">
-                        <div class="sim-viewfinder">
-                            <video id="webcam-preview" autoplay playsinline style="display: none;"></video>
-                            <div class="sim-forest-bg" id="sim-forest"></div>
-                            <div class="scan-laser"></div>
-                            <div class="scan-status" id="scan-status-text">Iniciant càmera...</div>
-                        </div>
-                        
-                        <div class="scanner-presets" id="preset-selector" style="display: none;">
-                            <p class="preset-title">O tria una d'aquestes mostres reals per escanejar:</p>
-                            <div class="preset-grid">
-                                <button class="preset-btn" data-plant="Orenga">🍀 Mostra 1 (Orenga)</button>
-                                <button class="preset-btn" data-plant="Farigola">🌿 Mostra 2 (Farigola)</button>
-                                <button class="preset-btn" data-plant="Teix">⚠️ Mostra 3 (Teix - Tòxica)</button>
-                                <button class="preset-btn preset-btn-alert" data-plant="Desconeguda" style="border-color: #cbd5e0; background: #fff5f5;">❓ Planta Desconeguda</button>
-                            </div>
-                        </div>
-                        <div class="sim-controls">
-                            <button class="btn btn-alert" id="btn-cancel-scan">Cancel·lar</button>
-                        </div>
-                    </div>
-
-                    <!-- Formulari de fallida d'identificació (Guardar planta) -->
                     <div class="scan-fail-result" id="scanner-result-failed" style="display: none;">
                         <div class="fail-icon">🔍</div>
                         <h3>Planta no identificada</h3>
@@ -291,10 +264,7 @@
         </div>
     </header>
 
-    <!-- CONTAINER PRINCIPAL -->
     <div class="container">
-
-        <!-- NAVEGADOR DE CATEGORIES / PESTANYES -->
         <section class="explorer-section">
             <h2 class="explorer-title">Explora per categoria</h2>
             
@@ -306,16 +276,11 @@
                 <button class="tab-btn" data-tab="pendents" style="--btn-highlight: var(--color-accent);">💾 Herbari (<span id="pendents-count">0</span>)</button>
             </div>
 
-            <!-- CONTENIDORS DE FILTRES SEGONS PESTANYA -->
             <div class="tab-content-container">
-                <!-- Pestanya Alfabètic -->
                 <div class="tab-pane active" id="pane-alfabetic">
-                    <div class="alphabet-bar" id="alphabet-container">
-                        <!-- Generat A-Z -->
-                    </div>
+                    <div class="alphabet-bar" id="alphabet-container"></div>
                 </div>
 
-                <!-- Pestanya Buscar -->
                 <div class="tab-pane" id="pane-buscar">
                     <div class="search-bar-wrapper">
                         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -333,20 +298,14 @@
                     </div>
                 </div>
 
-                <!-- Pestanya Remei (Unificada amb Receptes) -->
                 <div class="tab-pane" id="pane-remei">
-                    <!-- Selector de Sub-Categoria: Remeis o Receptes -->
                     <div class="sub-tab-selector" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
                         <button class="sub-tab-btn active" id="sub-tab-remeis">🏥 Remeis Medicinals</button>
                         <button class="sub-tab-btn" id="sub-tab-receptes">🍳 Receptes de Cuina</button>
                     </div>
-                    <!-- Contenidor de targetes de categories -->
-                    <div class="remedy-grid" id="remedy-container">
-                        <!-- Generat dinàmicament -->
-                    </div>
+                    <div class="remedy-grid" id="remedy-container"></div>
                 </div>
 
-                <!-- Pestanya Temporada -->
                 <div class="tab-pane" id="pane-temporada">
                     <div class="season-selector">
                         <button class="season-btn active" data-season="all">Totes</button>
@@ -358,51 +317,37 @@
                     </div>
                 </div>
 
-                <!-- Pestanya Pendents (Guardats localStorage) -->
                 <div class="tab-pane" id="pane-pendents">
                     <div class="pendents-header">
                         <h3>📋 Herbari de mostres pendents d'identificació</h3>
-                        <p>Aquí es guarden les fotografies de les plantes que no s'han pogut identificar al catàleg. Pots afegir-hi notes de camp i desar-les per a futures investigacions.</p>
+                        <p>Aquí es guarden les fotografies de les plantes que no s'han pogut identificar al catàleg.</p>
                     </div>
-                    <div class="pendents-grid" id="pendents-grid-container">
-                        <!-- Generat dinàmicament de localStorage -->
-                    </div>
+                    <div class="pendents-grid" id="pendents-grid-container"></div>
                 </div>
             </div>
 
-            <!-- RESULTATS DE FILTRAT I GRAELLA -->
             <div class="filter-status" id="filter-status-bar" style="display: none;">
                 <span class="status-text" id="filter-status-text">Mostrant 207 herbes.</span>
                 <button class="btn-text" id="btn-reset-filters">Restablir filtres</button>
             </div>
 
             <div class="plants-grid" id="plants-grid-container">
-                <!-- Targetes generades dinàmicament -->
                 <div class="loading-spinner">
                     <div class="spinner"></div>
                     <p>Carregant l'arxiu botànic...</p>
                 </div>
             </div>
         </section>
-
     </div>
 
-    <!-- DRAWER / FITXA BOTÀNICA DETALLADA -->
     <div class="botanical-drawer-overlay" id="drawer-overlay"></div>
     <div class="botanical-drawer" id="botanical-drawer" role="dialog" aria-modal="true">
-        <!-- Botó de tancar superior -->
         <button class="drawer-close-btn" id="drawer-close" aria-label="Tancar fitxa">&times;</button>
-        
-        <!-- Contingut de la fitxa -->
-        <div class="drawer-content" id="drawer-data-content">
-            <!-- Emplenat per JS -->
-        </div>
+        <div class="drawer-content" id="drawer-data-content"></div>
     </div>
 
-    <!-- MODAL DE LA LÀMINA BOTÀNICA (INFOGRAFIA DINÀMICA S. XIX) -->
     <div class="infographic-modal-overlay" id="info-modal-overlay">
         <div class="infographic-modal" id="infographic-modal">
-            <!-- Botons de control flotants en pantalla -->
             <div class="info-controls-floating">
                 <button class="btn-info-control" id="btn-print-sheet" title="Imprimir o desar en PDF">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
@@ -410,18 +355,12 @@
                 </button>
                 <button class="btn-info-control" id="btn-close-sheet" title="Tancar làmina">&times;</button>
             </div>
-            
-            <!-- Contingut dinàmic de la làmina dibuixada sobre 01 Fons.png -->
-            <div class="botanical-sheet-content" id="botanical-sheet-content">
-                <!-- Generat dinàmicament des d'app.js -->
-            </div>
+            <div class="botanical-sheet-content" id="botanical-sheet-content"></div>
         </div>
     </div>
 
-    <!-- NOTIFICACIÓ FLOTANT (TOAST) -->
     <div class="toast-notification" id="toast-notif"></div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <p class="footer-title">ARXIU BOTÀNIC DEL MONTSENY</p>
@@ -431,7 +370,6 @@
         </div>
     </footer>
 
-    <!-- Execució de scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
     <script src="app.js?v=1.0.4"></script>
 </body>
