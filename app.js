@@ -1845,6 +1845,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         DOM.webcamPreview.srcObject = null;
 
+        // === FORÇAR VISIBILITAT DEL PANELL DE LA CLAU ===
+        const clauPanel = document.getElementById('clau-botanica-panel');
+        if (clauPanel) {
+            clauPanel.style.style.display = 'block'; // Això l'obre a la força a la pantalla
+        } else {
+            console.error("Alerta: No s'ha trobat l'ID 'clau-botanica-panel' a l'HTML!");
+        }
+
         if (plantName === 'Desconeguda') {
             DOM.scannerSim.style.display = 'none';
             DOM.failPreviewImg.style.backgroundImage = `url('${state.currentScanImage}')`;
