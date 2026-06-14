@@ -716,10 +716,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         state.filteredHerbes.forEach(herba => {
             const isToxic = isPlantToxic(herba);
+            const isContraindicated = hasIncompatibilities(herba);
+            
+            // Prioritzar remeis/propietats o hàbitat abans de descripció de fulla per descriure l'herba en general
+            const descripcioHerba = herba.remeis || herba.habitat || herba.descripcio_fulla || "Descripció en preparació per al catàleg.";
             
             const card = document.createElement('article');
             card.className = 'plant-card';
             card.setAttribute('data-id', herba.idHerba);
+            
+            let badgeHTML = '';
+            if (isToxic) {
+                badgeHTML = '<span class="plant-toxic-badge">⚠️ Tòxica</span>';
+            } else if (isContraindicated) {
+                badgeHTML = '<span class="plant-incompatibilities-badge">⚠️ Incompatibilitats</span>';
+            } else {
+                badgeHTML = `
+                    <svg class="plant-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    ${herba.parts_utilitzades ? herba.parts_utilitzades.split(',')[0].trim() : 'planta'}
+                `;
+            }
             
             card.innerHTML = `
                 <div class="plant-card-top">
@@ -728,16 +746,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="plant-scientific">${herba.nom_cientific}</span>
                 </div>
                 <div class="plant-card-middle">
-                    <p class="plant-desc-short">${herba.descripcio_fulla || "Descripció física en preparació per al catàleg."}</p>
+                    <p class="plant-desc-short">${descripcioHerba}</p>
                 </div>
                 <div class="plant-card-bottom">
                     <span class="plant-info-badge">
-                        ${isToxic ? '<span class="plant-toxic-badge">⚠️ Tòxica</span>' : `
-                            <svg class="plant-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                            ${herba.parts_utilitzades ? herba.parts_utilitzades.split(',')[0].trim() : 'planta'}
-                        `}
+                        ${badgeHTML}
                     </span>
                     <span class="plant-card-action">
                         Fitxa
@@ -754,14 +767,43 @@ document.addEventListener('DOMContentLoaded', () => {
     function isPlantToxic(herba) {
         if (!herba.toxicitat) return false;
         const text = herba.toxicitat.toLowerCase();
+        
+        // Si indica de forma explícita que NO és tòxica, és innòcua o de molt baixa toxicitat, no és tòxica
+        if (text.includes('no és tòxica') || text.includes('no es toxica') || text.includes('no tòxica') || text.includes('no toxica') || text.includes('segura') || text.includes('innòcua') || text.includes('innocua') || text.includes('baixa toxicitat') || text.includes('toxicitat baixa') || text.includes('sense toxicitat') || text.includes('no presenta toxicitat')) {
+            return false;
+        }
+        
         return (
             text.includes('tòxic') || 
             text.includes('toxic') || 
             text.includes('mortal') || 
             text.includes('verinós') || 
+            text.includes('verinos') || 
+            text.includes('perillós') ||
+            text.includes('perillos') ||
             text.includes('irritant') ||
             text.includes('prohibit') ||
-            text.includes('atenció')
+            text.includes('atenció') ||
+            text.includes('atencio')
+        );
+    }
+
+    function hasIncompatibilities(herba) {
+        if (!herba.toxicitat) return false;
+        const text = herba.toxicitat.toLowerCase();
+        return (
+            text.includes('contraindicat') ||
+            text.includes('incompatible') ||
+            text.includes('interacció') ||
+            text.includes('interaccio') ||
+            text.includes('precaució') ||
+            text.includes('precaucio') ||
+            text.includes('evitar') ||
+            text.includes('incompatibilitat') ||
+            text.includes('incompatibilitats') ||
+            text.includes('no utilitzar') ||
+            text.includes('no fer servir') ||
+            text.includes('evitar en cas')
         );
     }
 
