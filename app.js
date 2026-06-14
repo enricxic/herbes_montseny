@@ -3658,7 +3658,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Mostrar missatge de benvinguda inicial
         appendChatMessage("bot", `Hola! Sóc l'Assistent Botànic de l'Arxiu del Montseny. Pregunta'm sobre les herbes del catàleg,
-             receptes culinàries, remeis medicinals o la toxicitat d'alguna planta.);
+             receptes culinàries, remeis medicinals o la toxicitat d'alguna planta.`);
 
         // Generar botons de suggeriment
         renderSuggestionChips();
